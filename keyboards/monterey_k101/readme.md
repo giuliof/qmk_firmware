@@ -1,12 +1,13 @@
 # monterey_k101
 
-![monterey_k101](imgur.com image replace me!)
+<!-- ![monterey_k101](imgur.com image replace me!) -->
 
-*A short description of the keyboard/project*
+A retrofit project for the [Monterey K101/K102](https://deskthority.net/wiki/Monterey_K101) AT keyboards.
+This should be fine for IBM Model M keyboards, which should share the same [matrix layout](https://sharktastica.co.uk/sims/matrix?kb=enhanced#Sim) (except for the missing key between left ctrl and left alt).
 
 * Keyboard Maintainer: [giuliof](https://github.com/giuliof)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: WIP, I have retrofitted just one PCB of the two I have
+* Hardware Availability: this is a retrofit project for old keyboards, just check if your keyboard shares the same matrix.
 
 Make example for this keyboard (after setting up your build environment):
 
@@ -20,8 +21,4 @@ See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_to
 
 ## Bootloader
 
-Enter the bootloader in 3 ways:
-
-* **Bootmagic reset**: Hold down the key at (0,0) in the matrix (usually the top left key or Escape) and plug in the keyboard
-* **Physical reset button**: Briefly press the button on the back of the PCB - some may have pads you must short instead
-* **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
+Enter the bootloader by **Bootmagic reset**: Hold down the Escape key at (7,2) in the matrix and plug in the keyboard.
