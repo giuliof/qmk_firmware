@@ -1,0 +1,3 @@
+LTO_ENABLE = no
+KEY_OVERRIDE_ENABLE = yes
+OPT ?= g
