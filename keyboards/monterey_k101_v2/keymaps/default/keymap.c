@@ -95,8 +95,12 @@ bool matrix_has_ghost(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    (void)keycode;
     (void)record;
+
+    // Manual override to bypass ghosting and allow a widely used combination that would be else suppressed :(
+    if (keycode == KC_V && (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL)))) {
+        return true;
+    }
 
     if (matrix_has_ghost()) {
         // Discard keypress if ghosting condition is detected
