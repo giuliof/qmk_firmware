@@ -43,6 +43,7 @@ const key_override_t MNXT_key_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F8, 
 const key_override_t MUTE_key_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F9, KC_MUTE);
 const key_override_t VOLD_key_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F10, KC_VOLD);
 const key_override_t VOLU_key_override = ko_make_basic(MOD_BIT(KC_RALT), KC_F11, KC_VOLU);
+const key_override_t  APP_key_override = ko_make_basic(MOD_BIT(KC_RALT), KC_BSLS, KC_APP);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
@@ -52,5 +53,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &MUTE_key_override,
     &VOLD_key_override,
     &VOLU_key_override,
+    &APP_key_override,
 	NULL // Null terminate the array of overrides!
 };
