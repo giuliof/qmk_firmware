@@ -56,3 +56,53 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &APP_key_override,
 	NULL // Null terminate the array of overrides!
 };
+
+
+/*
+ * Given a certain key, check if other keys are pressed in the same row
+ */
+bool check_for_two_in_a_row(uint8_t key_row, uint8_t key_col) {
+    for (uint8_t col = 0; col < MATRIX_COLS; col++) {
+        // Skip the actual input key
+        if (col == key_col)
+            continue;
+
+        if (matrix_is_on(key_row, col))
+            return true;
+    }
+
+    return false;
+}
+
+bool matrix_has_ghost(void) {
+    for (uint8_t col = 0; col < MATRIX_COLS; col++) {
+        bool found_two_in_a_row = false;
+        for (uint8_t row = 0; row < MATRIX_ROWS; row++) {
+            // Skip keys thet are not pressed
+            if (!matrix_is_on(row, col))
+                continue;
+
+            bool two_in_a_row = check_for_two_in_a_row(row, col);
+
+            // Found a ghost condition!
+            if (two_in_a_row && found_two_in_a_row)
+                return true;
+            else if (two_in_a_row)
+                found_two_in_a_row =  true;
+        }
+    }
+
+    return false;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    (void)keycode;
+    (void)record;
+
+    if (matrix_has_ghost()) {
+        // Discard keypress if ghosting condition is detected
+        return false;
+    }
+
+    return true;
+}
